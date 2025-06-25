@@ -1,7 +1,7 @@
 #vLLM 0.9.1
 --index-url https://pypi.org/simple
 --extra-index-url https://download.pytorch.org/whl/test/cu126 
-torch==2.7.0
+torch==2.7.1+cu126
 torchvision==0.22.0
 torchaudio==2.7.0
 vllm==0.9.1
