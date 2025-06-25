@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './styles/customToast.css';
+
+.deep-search-task-summary {
+  font-size: 0.8em;
+  color: #555; 
+  margin-top: 12px; 
+  padding-top: 8px; 
+  border-top: 1px solid #e2e8f0; 
+  line-height: 1.5; 
+}
+
+@keyframes pulse-strong {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-strong {
+  animation: pulse-strong 1.5s infinite ease-in-out;
+}

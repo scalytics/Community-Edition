@@ -1,0 +1,203 @@
+/* Custom Toast Styles for react-toastify */
+
+/* Default Toast Body Styling (applied to all types unless overridden) */
+.Toastify__toast-body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.9rem; /* Slightly larger for better readability */
+  line-height: 1.4;
+  padding: 12px 16px; /* Adjust padding */
+}
+
+/* General Toast Container Styling */
+.Toastify__toast {
+  border-radius: 8px; /* Softer corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  padding: 0; /* Remove default padding as body will handle it */
+}
+
+/* Light Theme Defaults */
+:root {
+  --toast-text-light: #333;
+  --toast-bg-light: #fff;
+  --toast-progress-bar-light: #a1a1aa; /* zinc-400 */
+
+  --toast-success-bg-light: #f0fdf4; /* green-50 */
+  --toast-success-text-light: #166534; /* green-800 */
+  --toast-success-progress-light: #22c55e; /* green-500 */
+  --toast-success-icon-light: #22c55e;
+
+  --toast-error-bg-light: #fef2f2;   /* red-50 */
+  --toast-error-text-light: #991b1b;    /* red-800 */
+  --toast-error-progress-light: #ef4444; /* red-500 */
+  --toast-error-icon-light: #ef4444;
+
+  --toast-info-bg-light: #eff6ff;    /* blue-50 */
+  --toast-info-text-light: #1e40af;     /* blue-800 */
+  --toast-info-progress-light: #3b82f6;  /* blue-500 */
+  --toast-info-icon-light: #3b82f6;
+
+  --toast-warning-bg-light: #fffbeb; /* yellow-50 */
+  --toast-warning-text-light: #854d0e;  /* yellow-800 */
+  --toast-warning-progress-light: #f59e0b;/* yellow-500 */
+  --toast-warning-icon-light: #f59e0b;
+}
+
+/* Dark Theme Defaults */
+.dark {
+  --toast-text-dark: #e5e7eb; /* gray-200 */
+  --toast-bg-dark: #1f2937;  /* gray-800 */
+  --toast-progress-bar-dark: #6b7280; /* gray-500 */
+
+  --toast-success-bg-dark: #052e16; /* green-950 */
+  --toast-success-text-dark: #bbf7d0; /* green-200 */
+  --toast-success-progress-dark: #4ade80; /* green-400 */
+  --toast-success-icon-dark: #4ade80;
+
+  --toast-error-bg-dark: #3f1212;   /* red-950 */
+  --toast-error-text-dark: #fca5a5;    /* red-300 */
+  --toast-error-progress-dark: #f87171; /* red-400 */
+  --toast-error-icon-dark: #f87171;
+
+  --toast-info-bg-dark: #172554;    /* blue-950 */
+  --toast-info-text-dark: #bfdbfe;     /* blue-200 */
+  --toast-info-progress-dark: #60a5fa;  /* blue-400 */
+  --toast-info-icon-dark: #60a5fa;
+
+  --toast-warning-bg-dark: #422006; /* yellow-950 */
+  --toast-warning-text-dark: #fde68a;  /* yellow-200 */
+  --toast-warning-progress-dark: #fbbf24;/* yellow-400 */
+  --toast-warning-icon-dark: #fbbf24;
+}
+
+/* Applying theme variables */
+.Toastify__toast--default {
+  background-color: var(--toast-bg-light);
+  color: var(--toast-text-light);
+}
+.dark .Toastify__toast--default {
+  background-color: var(--toast-bg-dark);
+  color: var(--toast-text-dark);
+}
+.Toastify__progress-bar--default {
+  background: var(--toast-progress-bar-light);
+}
+.dark .Toastify__progress-bar--default {
+  background: var(--toast-progress-bar-dark);
+}
+
+
+/* Success Toast */
+.Toastify__toast--success {
+  background-color: var(--toast-success-bg-light) !important;
+  color: var(--toast-success-text-light) !important;
+  border-left: 4px solid var(--toast-success-icon-light);
+}
+.dark .Toastify__toast--success {
+  background-color: var(--toast-success-bg-dark) !important;
+  color: var(--toast-success-text-dark) !important;
+  border-left: 4px solid var(--toast-success-icon-dark);
+}
+.Toastify__progress-bar--success {
+  background: var(--toast-success-progress-light) !important;
+}
+.dark .Toastify__progress-bar--success {
+  background: var(--toast-success-progress-dark) !important;
+}
+.Toastify__toast-icon svg { /* For default icons if used */
+ fill: var(--toast-success-icon-light);
+}
+.dark .Toastify__toast-icon svg {
+ fill: var(--toast-success-icon-dark);
+}
+
+
+/* Error Toast */
+.Toastify__toast--error {
+  background-color: var(--toast-error-bg-light) !important;
+  color: var(--toast-error-text-light) !important;
+  border-left: 4px solid var(--toast-error-icon-light);
+}
+.dark .Toastify__toast--error {
+  background-color: var(--toast-error-bg-dark) !important;
+  color: var(--toast-error-text-dark) !important;
+  border-left: 4px solid var(--toast-error-icon-dark);
+}
+.Toastify__progress-bar--error {
+  background: var(--toast-error-progress-light) !important;
+}
+.dark .Toastify__progress-bar--error {
+  background: var(--toast-error-progress-dark) !important;
+}
+.Toastify__toast--error .Toastify__toast-icon svg {
+  fill: var(--toast-error-icon-light);
+}
+.dark .Toastify__toast--error .Toastify__toast-icon svg {
+  fill: var(--toast-error-icon-dark);
+}
+
+
+/* Info Toast */
+.Toastify__toast--info {
+  background-color: var(--toast-info-bg-light) !important;
+  color: var(--toast-info-text-light) !important;
+  border-left: 4px solid var(--toast-info-icon-light);
+}
+.dark .Toastify__toast--info {
+  background-color: var(--toast-info-bg-dark) !important;
+  color: var(--toast-info-text-dark) !important;
+  border-left: 4px solid var(--toast-info-icon-dark);
+}
+.Toastify__progress-bar--info {
+  background: var(--toast-info-progress-light) !important;
+}
+.dark .Toastify__progress-bar--info {
+  background: var(--toast-info-progress-dark) !important;
+}
+.Toastify__toast--info .Toastify__toast-icon svg {
+  fill: var(--toast-info-icon-light);
+}
+.dark .Toastify__toast--info .Toastify__toast-icon svg {
+  fill: var(--toast-info-icon-dark);
+}
+
+/* Warning Toast */
+.Toastify__toast--warning {
+  background-color: var(--toast-warning-bg-light) !important;
+  color: var(--toast-warning-text-light) !important;
+  border-left: 4px solid var(--toast-warning-icon-light);
+}
+.dark .Toastify__toast--warning {
+  background-color: var(--toast-warning-bg-dark) !important;
+  color: var(--toast-warning-text-dark) !important;
+  border-left: 4px solid var(--toast-warning-icon-dark);
+}
+.Toastify__progress-bar--warning {
+  background: var(--toast-warning-progress-light) !important;
+}
+.dark .Toastify__progress-bar--warning {
+  background: var(--toast-warning-progress-dark) !important;
+}
+.Toastify__toast--warning .Toastify__toast-icon svg {
+  fill: var(--toast-warning-icon-light);
+}
+.dark .Toastify__toast--warning .Toastify__toast-icon svg {
+  fill: var(--toast-warning-icon-dark);
+}
+
+
+/* Close Button Styling */
+.Toastify__close-button {
+  color: var(--toast-text-light);
+  opacity: 0.7;
+}
+.dark .Toastify__close-button {
+  color: var(--toast-text-dark);
+}
+.Toastify__close-button:hover, .Toastify__close-button:focus {
+  opacity: 1;
+}
+
+/* Example of custom class for specific toasts if needed */
+.custom-toast-class {
+  /* specific styles */
+}

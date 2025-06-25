@@ -1,0 +1,38 @@
+{
+  "name": "live-search",
+  "description": "Lightweight web search enhancement for LLM responses. Quickly searches the web and provides relevant, current information to enhance answers.",
+  "path": "src/mcp_tools/live_search/simpleLiveSearchTool.js",
+  "function_name": "run",
+  "arguments_schema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The search query to find current web information about."
+      },
+      "max_results": {
+        "type": "integer",
+        "description": "Maximum number of search results to process.",
+        "default": 5,
+        "minimum": 1,
+        "maximum": 10
+      }
+    },
+    "required": ["query"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "full_content": {
+        "type": "string",
+        "description": "Enhanced response with current web information."
+      },
+      "sources": {
+        "type": "array",
+        "items": { "type": "object" },
+        "description": "Array of web sources used."
+      }
+    },
+    "required": ["full_content"]
+  }
+}

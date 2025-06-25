@@ -1,0 +1,19 @@
+{
+  "name": "image_gen",
+  "displayName": "Image Generation",
+  "description": "Configure the model used for generating images from text prompts.",
+  "category": "AI Model Tools",
+  "arguments_schema": {
+    "type": "object",
+    "properties": {
+      "selected_model_id": {
+        "type": "string",
+        "description": "Image Generation Model",
+        "ui:widget": "model_dropdown_image_capable",
+        "tooltip": "Select an AI model that is capable of generating images."
+      }
+    },
+    "required": ["selected_model_id"]
+  },
+  "is_internal_config_only": true 
+}

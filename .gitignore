@@ -1,0 +1,67 @@
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log
+yarn-debug.log
+
+# Node.js
+node_modules/
+package-lock.json
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env.*
+frontend/package-lock.json
+
+# Environment variables
+.env
+.env.*
+!/.env.example
+rename-to-.env
+venv/
+
+# Data and databases
+data/
+database.sqlite
+*.db
+
+# Uploads
+uploads/
+
+# SaaS-specific files (commercial)
+saas/
+
+# Models - ignore all model files but keep the directory structure
+models/*
+!models/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+instance/
+
+# macOS
+.DS_Store
+
+# IDE / Editor specific
+.vscode/
+.idea/

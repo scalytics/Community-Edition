@@ -1,0 +1,76 @@
+#vLLM 0.9.1
+--index-url https://pypi.org/simple
+--extra-index-url https://download.pytorch.org/whl/test/cu126 
+torch==2.7.0
+torchvision==0.22.0
+torchaudio==2.7.0
+vllm==0.9.1
+bitsandbytes>=0.45.3; sys_platform == 'linux'
+bitsandbytes==0.41.3; sys_platform == 'darwin'
+compressed-tensors>=0.10
+gguf>=0.13
+wrapt>=1.15.0,<2
+Deprecated>=1.2.14,<2
+opentelemetry-api==1.26.0
+opentelemetry-sdk==1.26.0
+opentelemetry-proto==1.26.0
+opentelemetry-exporter-otlp==1.26.0
+opentelemetry-exporter-otlp-proto-grpc==1.26.0
+opentelemetry-exporter-otlp-proto-http==1.26.0
+opentelemetry-exporter-otlp-proto-common==1.26.0
+MarkupSafe>=2.1.5,<3         
+importlib-metadata>=8,<9     
+
+huggingface_hub>=0.16.0
+tqdm>=4.65.0
+python-whois>=0.8.0
+requests>=2.28.0
+packaging<25,>=23.2
+transformers>=4.30.0
+accelerate>=0.21.0
+sentence-transformers
+lancedb>=0.3.0
+pylance
+tantivy
+duckduckgo_search
+google-api-python-client
+readability-lxml
+scrapy-playwright
+langchain>=0.1.0
+langchain-core
+langgraph
+playwright
+spacy>=3.7.0,<3.8.0
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz
+de_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.7.0/de_core_news_sm-3.7.0.tar.gz
+fr_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.7.0/fr_core_news_sm-3.7.0.tar.gz
+es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.7.0/es_core_news_sm-3.7.0.tar.gz
+google-cloud-aiplatform>=1.25.0
+openai>=1.0.0
+anthropic>=0.20.0
+cohere>=4.0.0
+mistralai>=0.1.0
+pdfminer.six>=20221105
+wikipedia-api>=0.6.0
+litellm>=1.30.0
+pyalex>=0.8.2
+aiohttp
+numpy>=1.24.4,<2.0.0
+fsspec<=2025.3.0,>=2023.1.0
+tldextract>=3.6.0 
+
+# Dependencies for FastAPI Live Search Orchestrator Service
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+sse-starlette
+python-dotenv
+Scrapy==2.11.2
+
+# For text extraction from uploaded files
+PyPDF2>=3.0.0
+pdfplumber>=0.10.0 # Added for PDF text and table extraction
+python-docx>=1.1.0
+pandas>=2.0.0
+openpyxl>=3.1.0

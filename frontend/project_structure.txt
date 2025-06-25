@@ -1,0 +1,61 @@
+[ 384]  .
+├── [755K]  package-lock.json
+├── [1.1K]  package.json
+├── [  82]  postcss.config.js
+├── [   0]  project_structure.txt
+├── [ 160]  public
+│   ├── [   0]  favicon.ico
+│   ├── [ 649]  index.html
+│   └── [ 513]  manifest.json
+├── [ 384]  src
+│   ├── [1.2K]  App.jsx
+│   ├── [ 128]  assets
+│   │   ├── [  64]  images
+│   │   └── [  96]  styles
+│   │       └── [1.7K]  index.css
+│   ├── [ 256]  components
+│   │   ├── [ 160]  admin
+│   │   │   ├── [ 33K]  ModelManager.jsx
+│   │   │   ├── [ 13K]  StatisticsPanel.jsx
+│   │   │   └── [ 21K]  UserManager.jsx
+│   │   ├── [ 128]  auth
+│   │   │   ├── [7.1K]  LoginForm.jsx
+│   │   │   └── [8.0K]  RegisterForm.jsx
+│   │   ├── [ 224]  chat
+│   │   │   ├── [3.5K]  ChatBubble.jsx
+│   │   │   ├── [3.4K]  ChatInput.jsx
+│   │   │   ├── [5.4K]  ChatList.jsx
+│   │   │   ├── [6.1K]  ChatView.jsx
+│   │   │   └── [4.0K]  ModelSelector.jsx
+│   │   ├── [ 160]  common
+│   │   │   ├── [2.0K]  Logo.jsx
+│   │   │   ├── [7.3K]  Navbar.jsx
+│   │   │   └── [7.5K]  Sidebar.jsx
+│   │   ├── [ 160]  dashboard
+│   │   │   ├── [5.0K]  RecentChats.jsx
+│   │   │   ├── [2.5K]  Stats.jsx
+│   │   │   └── [2.5K]  WelcomeCard.jsx
+│   │   └── [ 160]  settings
+│   │       ├── [7.4K]  ApiKeyManager.jsx
+│   │       ├── [ 12K]  ProfileSettings.jsx
+│   │       └── [9.0K]  ThemeSettings.jsx
+│   ├── [  64]  contexts
+│   ├── [  64]  hooks
+│   ├── [ 267]  index.jsx
+│   ├── [ 224]  pages
+│   │   ├── [3.6K]  AdminPage.jsx
+│   │   ├── [5.9K]  ChatPage.jsx
+│   │   ├── [7.5K]  DashboardPage.jsx
+│   │   ├── [7.1K]  LoginPage.jsx
+│   │   └── [4.5K]  SettingsPage.jsx
+│   ├── [3.1K]  routes.js
+│   ├── [ 224]  services
+│   │   ├── [3.9K]  adminService.js
+│   │   ├── [2.6K]  apiService.js
+│   │   ├── [3.3K]  authService.js
+│   │   ├── [3.4K]  chatService.js
+│   │   └── [4.7K]  modelService.js
+│   └── [  64]  utils
+└── [1.1K]  tailwind.config.js
+
+18 directories, 41 files

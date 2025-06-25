@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/ico.jpg" type="image/jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Scalytics Connect - Private AI Agent Platform" />
+    <meta name="keywords" content="Scalytics Connect, AI agent, private AI, secure login, enterprise AI, AI platform, large language models, LLM" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Scalytics Connect" />
+    <meta property="og:description" content="Scalytics Connect - Private AI Agent Platform" />
+    <meta property="og:image" content="%PUBLIC_URL%/240.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Scalytics Connect" />
+    <meta property="twitter:description" content="Scalytics Connect - Private AI Agent Platform" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/240.jpg" />
+
+    <script>
+      (function() {
+        try {
+          function applyInitialTheme(theme) {
+            const htmlEl = document.documentElement;
+            htmlEl.classList.remove('dark'); 
+
+            if (theme === 'dark') {
+              htmlEl.classList.add('dark');
+            } else if (theme === 'light') {
+            } else { 
+              if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                htmlEl.classList.add('dark');
+              }
+            }
+          }
+
+          // Try to get theme from localStorage cache
+          let initialTheme = 'system'; 
+          const cachedUserString = localStorage.getItem('user');
+          if (cachedUserString) {
+            const cachedUser = JSON.parse(cachedUserString);
+            if (cachedUser && cachedUser.settings && cachedUser.settings.theme) {
+              initialTheme = cachedUser.settings.theme;
+            }
+          }
+          applyInitialTheme(initialTheme);
+        } catch (e) {
+          console.error('Error applying initial theme:', e);
+          // Fallback or do nothing, let React handle it later
+        }
+      })();
+    </script>
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/240.jpg" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Scalytics Connect</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,731 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Make sure Tailwind directives are at the very top */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global chat variables */
+:root {
+  --chat-max-width: 1024px; /* 5xl in Tailwind is 1024px */
+}
+
+/* Chat container classes */
+.chat-container {
+  max-width: var(--chat-max-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Custom animations */
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fade-out-up {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.5s ease-out forwards;
+}
+
+.animate-fade-out-up {
+  animation: fade-out-up 0.5s ease-out forwards;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Chat message styling */
+.prose pre {
+  @apply bg-gray-800 text-white p-4 rounded-md overflow-x-auto;
+}
+
+.prose code {
+  @apply bg-gray-100 text-gray-800 px-1 py-0.5 rounded;
+}
+
+.prose pre code {
+  @apply bg-transparent text-white p-0;
+}
+
+/* Dark mode support */
+.dark {
+  @apply bg-gray-900 text-white;
+}
+
+.dark .bg-white {
+  @apply bg-gray-800;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-gray-700;
+}
+
+.dark .bg-gray-100 {
+  @apply bg-gray-700;
+}
+
+.dark .text-gray-900 {
+  @apply text-white;
+}
+
+.dark .text-gray-800 {
+  @apply text-gray-100;
+}
+
+.dark .text-gray-700 {
+  @apply text-gray-200;
+}
+
+.dark .text-gray-600 {
+  @apply text-gray-300;
+}
+
+.dark .text-gray-500 {
+  @apply text-gray-400;
+}
+
+.dark .border-gray-200 {
+  @apply border-gray-700;
+}
+
+.dark .border-gray-300 {
+  @apply border-gray-600;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-gray-600;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Animation definitions from animations.css */
+/* Progress bar pulse animation */
+@keyframes progress-pulse {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Spinner rotation animation */
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle pulsing for indeterminate progress */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Dots loading animation */
+@keyframes dots {
+  0%, 20% {
+    content: ".";
+  }
+  40% {
+    content: "..";
+  }
+  60%, 80% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+/* Slide gradient animation */
+@keyframes slide-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* CSS utility classes for animations */
+.animate-progress-pulse {
+  animation: progress-pulse 2s ease-in-out infinite;
+}
+
+.animate-spinner-rotate {
+  animation: spinner-rotate 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Markdown content styling from markdown.css */
+/* Markdown content styling */
+.markdown-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.dark .markdown-content {
+  color: #e1e1e1;
+}
+
+/* Light/dark mode for proper prose in Tailwind */
+.dark .prose pre {
+  background-color: #334155 !important; /* Lighter slate color for better contrast */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .prose code {
+  color: #f1f5f9 !important;
+}
+
+.dark .prose pre code {
+  color: #f1f5f9 !important;
+  background-color: transparent !important;
+}
+
+/* Syntax highlighting in dark mode */
+.dark .prose .hljs-keyword,
+.dark .prose .hljs-selector-tag {
+  color: #c4b5fd !important; /* Pastel purple */
+}
+
+.dark .prose .hljs-title,
+.dark .prose .hljs-section,
+.dark .prose .hljs-function {
+  color: #93c5fd !important; /* Pastel blue */
+}
+
+.dark .prose .hljs-string,
+.dark .prose .hljs-attr {
+  color: #bef264 !important; /* Pastel green */
+}
+
+.dark .prose .hljs-number,
+.dark .prose .hljs-literal {
+  color: #fdba74 !important; /* Pastel orange */
+}
+
+.dark .prose .hljs-comment {
+  color: #94a3b8 !important; /* Slate gray */
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #111;
+}
+
+.dark .markdown-content h1,
+.dark .markdown-content h2,
+.dark .markdown-content h3,
+.dark .markdown-content h4,
+.dark .markdown-content h5,
+.dark .markdown-content h6 {
+  color: #f1f1f1;
+}
+
+.markdown-content h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.dark .markdown-content h1 {
+  border-bottom: 1px solid #444;
+}
+
+.markdown-content h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.dark .markdown-content h2 {
+  border-bottom: 1px solid #444;
+}
+
+.markdown-content h3 {
+  font-size: 1.25em;
+}
+
+.markdown-content h4 {
+  font-size: 1em;
+}
+
+.markdown-content h5 {
+  font-size: 0.875em;
+}
+
+.markdown-content h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.dark .markdown-content h6 {
+  color: #a0a0a0;
+}
+
+.markdown-content a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.dark .markdown-content a {
+  color: #58a6ff;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+}
+
+.markdown-content p,
+.markdown-content blockquote,
+.markdown-content ul,
+.markdown-content ol,
+.markdown-content dl,
+.markdown-content table,
+.markdown-content pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-content blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.dark .markdown-content blockquote {
+  color: #9da5b4;
+  border-left: 0.25em solid #4b5364;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 2em;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+}
+
+.markdown-content li {
+  margin-top: 0.25em;
+}
+
+.markdown-content li+li {
+  margin-top: 0.25em;
+}
+
+.markdown-content table {
+  display: table;
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-content table th {
+  font-weight: 600;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+  background-color: #f6f8fa;
+}
+
+.dark .markdown-content table th {
+  border: 1px solid #4b5364;
+  background-color: #2c313a;
+}
+
+.markdown-content table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.dark .markdown-content table td {
+  border: 1px solid #4b5364;
+}
+
+.markdown-content table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.dark .markdown-content table tr:nth-child(2n) {
+  background-color: #2c313a;
+}
+
+.markdown-content pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #282c34; /* Darker background for code blocks */
+  border-radius: 3px;
+  color: #abb2bf; /* Light text color for code blocks */
+}
+
+.markdown-content code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.1);
+  border-radius: 3px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  color: #e06c75; /* Red-ish color for inline code */
+}
+
+.dark .markdown-content code {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #e06c75; /* Keep the same style for inline code */
+}
+
+.markdown-content pre code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+  color: #abb2bf; /* Reset to default code block text color */
+}
+
+/* Highlight.js specific styles for better readability */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c678dd;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-function {
+  color: #61afef;
+}
+
+.hljs-string,
+.hljs-attr {
+  color: #98c379;
+}
+
+.hljs-number,
+.hljs-literal {
+  color: #d19a66;
+}
+
+.hljs-comment {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* Mermaid diagram container */
+.mermaid {
+  margin: 16px 0;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.dark .mermaid {
+  background-color: #334155; /* Match the code block color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .prose .mermaid {
+  background-color: #334155 !important;
+}
+
+/* Improve dark mode styling for mermaid diagrams */
+.dark .prose .mermaid-diagram {
+  background-color: #334155 !important;
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Mermaid color overrides for better visibility */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon,
+.mermaid .node path {
+  fill: #f4f6f8 !important;
+  stroke: #5c7080 !important;
+}
+
+.dark .mermaid .node rect,
+.dark .mermaid .node circle,
+.dark .mermaid .node ellipse,
+.dark .mermaid .node polygon,
+.dark .mermaid .node path {
+  fill: #3b4351 !important;
+  stroke: #94a3b8 !important; /* Lighter slate gray for better visibility */
+}
+
+.mermaid .edgePath .path {
+  stroke: #5c7080 !important;
+}
+
+.dark .mermaid .edgePath .path {
+  stroke: #94a3b8 !important; /* Lighter slate gray for better visibility */
+}
+
+/* Fix all lines and strokes in dark mode */
+.dark .mermaid line,
+.dark .mermaid path:not(.node path) {
+  stroke: #94a3b8 !important; /* Lighter slate gray for all lines */
+}
+
+.dark .mermaid .flowchart-link {
+  stroke: #94a3b8 !important;
+}
+
+.mermaid .label {
+  color: #182026 !important;
+}
+
+.dark .mermaid .label {
+  color: #f1f1f1 !important;
+}
+
+.mermaid .label text {
+  fill: #182026 !important;
+}
+
+.dark .mermaid .label text {
+  fill: #f1f1f1 !important;
+}
+
+.mermaid .cluster rect {
+  fill: #f4f6f8 !important;
+  stroke: #d3dce9 !important;
+}
+
+.dark .mermaid .cluster rect {
+  fill: #3b4351 !important;
+  stroke: #94a3b8 !important; /* Standardized light gray for all lines */
+}
+
+/* Sequential diagrams */
+.mermaid .actor {
+  fill: #f4f6f8 !important;
+  stroke: #5c7080 !important;
+}
+
+.dark .mermaid .actor {
+  fill: #3b4351 !important;
+  stroke: #94a3b8 !important; /* Standardized light gray for all lines */
+}
+
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke: #5c7080 !important;
+}
+
+.dark .mermaid .messageLine0,
+.dark .mermaid .messageLine1 {
+  stroke: #94a3b8 !important; /* Standardized light gray for all lines */
+}
+
+/* Fix SVG container size */
+.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.markdown-content img {
+  max-width: 100%;
+  margin-bottom: 16px;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.dark .markdown-content img {
+  background-color: #2c313a;
+}
+
+.markdown-content hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.dark .markdown-content hr {
+  background-color: #444;
+}
+
+/* Atom One Dark highlight.js theme styles (from highlight.js/styles/atom-one-dark.css) */
+.hljs{color:#abb2bf;background:#282c34}.hljs-comment,.hljs-quote{color:#5c6370;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#c678dd}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#e06c75}.hljs-literal{color:#56b6c2}.hljs-addition,.hljs-attribute,.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#98c379}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#d19a66}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#61aeee}.hljs-built_in,.hljs-class .hljs-title,.hljs-title.class_{color:#e6c07b}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}
+
+/* Custom Toast Styles */
+.custom-toast {
+  @apply !bg-gray-100 dark:!bg-gray-700 !rounded-md !shadow-md !border !border-gray-200 dark:!border-gray-600 !max-w-xs !p-0; /* Reduced padding, max-width, slightly less rounded */
+}
+
+.custom-toast-body {
+  @apply !text-gray-800 dark:!text-gray-100 !text-[11px] !font-normal !p-2 !m-0; /* Even smaller font, normal weight, minimal padding/margin */
+  line-height: 1.4; /* Adjust line height for smaller font */
+}
+
+/* Ensure info icon color matches text and adjust size/margin */
+.custom-toast .Toastify__toast-icon > svg {
+  @apply !fill-current !text-gray-800 dark:!text-gray-100 !w-4 !h-4; /* Smaller icon */
+}
+
+/* Adjust margin around icon if needed */
+.custom-toast .Toastify__toast-body {
+  margin-left: 6px !important; /* Reduce space next to icon */
+  margin-right: 6px !important;
+}
+
+/* Custom scrollbar styling (Moved from index.css) */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  /* Webkit browsers (Chrome, Safari, newer Edge) */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(59, 130, 246, 0.3); /* blue-500 with low opacity */
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(37, 99, 235, 0.5); /* blue-600 with opacity */
+  }
+
+  /* Dark mode scrollbar */
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(96, 165, 250, 0.2); /* blue-400 with opacity */
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(147, 197, 253, 0.3); /* blue-300 with opacity */
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera but allow scrolling (Moved from index.css) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox but allow scrolling (Moved from index.css) */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom styles for System Prompt Tooltip */
+.system-prompt-tooltip-box {
+  font-size: 0.75rem; /* Equivalent to text-xs */
+  line-height: 1.625; /* Equivalent to leading-relaxed */
+  max-width: 36rem; /* Equivalent to max-w-xl */
+  white-space: pre-wrap; /* Handle newlines and wrapping */
+  /* Add any other base styles needed if Tailwind base is somehow excluded */
+}

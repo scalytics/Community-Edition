@@ -1,0 +1,115 @@
+#!/bin/bash
+# saas-python - Python wrapper script for SaaS virtual environment
+# This script finds and uses the SaaS Python virtual environment
+
+# Find script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+APP_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Functions to find environment variables and python venv
+find_env_file() {
+    local env_paths=(
+        "$APP_DIR/.connect-env"
+        "$APP_DIR/.env"
+        "$SCRIPT_DIR/.env"
+    )
+    
+    for env_path in "${env_paths[@]}"; do
+        if [ -f "$env_path" ]; then
+            echo "$env_path"
+            return 0
+        fi
+    done
+    
+    return 1
+}
+
+# Try to source the environment file if it exists
+ENV_FILE=$(find_env_file)
+if [ -n "$ENV_FILE" ]; then
+    source "$ENV_FILE"
+fi
+
+# Find the SaaS Python virtual environment
+find_saas_venv() {
+    # First check environment variable
+    if [ -n "$PYTHON_VENV_DIR" ] && [ -d "$PYTHON_VENV_DIR" ]; then
+        echo "Using PYTHON_VENV_DIR environment variable: $PYTHON_VENV_DIR" >&2
+        echo "$PYTHON_VENV_DIR"
+        return 0
+    fi
+    
+    # Check standard locations
+    local venv_paths=(
+        "$APP_DIR/data/python-venv"         # Legacy path (most common in production)
+        "$SCRIPT_DIR/../data/python-venv"   # Relative to scripts
+        "$SCRIPT_DIR/../../data/python-venv" # One level up
+    )
+    
+    for venv_path in "${venv_paths[@]}"; do
+        if [ -d "$venv_path" ]; then
+            echo "Found virtual environment at: $venv_path" >&2
+            
+            # Set environment variable for other processes and scripts
+            export PYTHON_VENV_DIR="$venv_path"
+            
+            echo "$venv_path"
+            return 0
+        fi
+    done
+    
+    # If we can't find the venv, output error and fall back to system Python
+    echo "WARNING: Could not find SaaS Python virtual environment. Using system Python." >&2
+    return 1
+}
+
+# Set up robust pip environment
+configure_pip_environment() {
+    local venv_dir="$1"
+    
+    # Explicitly prevent user installs
+    export PIP_USER=0
+    export PIP_REQUIRE_VIRTUALENV=0
+    export PIP_NO_USER_CONFIG=1
+    export PYTHONNOUSERSITE=1
+    
+    # Configure pip.conf location if available
+    local pip_conf="$venv_dir/pip/pip.conf"
+    local pip_dir="$venv_dir/pip"
+    
+    if [ -f "$pip_conf" ]; then
+        export PIP_CONFIG_FILE="$pip_conf"
+    else
+        # Use null config as fallback
+        export PIP_CONFIG_FILE=/dev/null
+    fi
+}
+
+# Find the venv
+VENV_DIR=$(find_saas_venv)
+if [ -n "$VENV_DIR" ]; then
+    # Set up robust pip environment
+    configure_pip_environment "$VENV_DIR"
+    
+    # Use the venv Python
+    PYTHON_BIN="$VENV_DIR/bin/python"
+    if [ -x "$PYTHON_BIN" ]; then
+        # Set Python environment variables
+        export PYTHONPATH="$VENV_DIR/lib/python*/site-packages:$PYTHONPATH"
+        export VIRTUAL_ENV="$VENV_DIR"
+        # Execute Python from the virtual environment with the robust environment settings
+        exec "$PYTHON_BIN" "$@"
+    fi
+fi
+
+# Fall back to system Python if venv not found or not working
+for system_python in python3 python; do
+    if command -v "$system_python" &> /dev/null; then
+        echo "WARNING: Using system Python ($system_python) as fallback!" >&2
+        exec "$system_python" "$@"
+        exit $?
+    fi
+done
+
+echo "ERROR: No Python interpreter found!" >&2
+exit 1

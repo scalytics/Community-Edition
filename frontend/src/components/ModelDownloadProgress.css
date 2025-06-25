@@ -1,0 +1,144 @@
+/* Enhanced progress bar styling with theme compatibility */
+.progress-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: rgba(203, 213, 225, 0.3);
+  transition: all 0.5s ease-in-out;
+}
+
+.progress-bar-dark {
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  transition: width 0.5s ease-in-out;
+  background-size: 30px 30px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* In dark mode, make the glow more pronounced */
+.dark .progress-bar-fill {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+}
+
+/* Animated stripes for the progress bar */
+.progress-bar-animated {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% { background-position: 40px 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Shimmer effect for steps */
+.step-active-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { box-shadow: 0 0 0px rgba(59, 130, 246, 0.5); }
+  50% { box-shadow: 0 0 8px rgba(59, 130, 246, 0.8); }
+  100% { box-shadow: 0 0 0px rgba(59, 130, 246, 0.5); }
+}
+
+/* Completed step pulse animation */
+.step-completed-pulse {
+  animation: completedPulse 2s infinite;
+}
+
+@keyframes completedPulse {
+  0% { box-shadow: 0 0 0px rgba(34, 197, 94, 0.5); }
+  50% { box-shadow: 0 0 8px rgba(34, 197, 94, 0.8); }
+  100% { box-shadow: 0 0 0px rgba(34, 197, 94, 0.5); }
+}
+
+/* Loading dots animation with better timing */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots .dot {
+  display: inline-block;
+  animation: dotPulse 1.5s infinite;
+  animation-fill-mode: both;
+  margin-right: 2px;
+}
+
+.loading-dots .dot:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.loading-dots .dot:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes dotPulse {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+/* Container transitions */
+.model-download-progress {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Step transition animations */
+.step-node {
+  transition: all 0.3s ease-in-out;
+}
+
+.step-line {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Status message fade-in animation */
+.status-message {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Status icon pulse */
+.status-icon-pulse {
+  animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Progress percentage flip animation */
+.percentage-flip {
+  display: inline-block;
+  animation: percentageFlip 0.5s ease-out;
+}
+
+@keyframes percentageFlip {
+  0% { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}

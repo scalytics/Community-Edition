@@ -1,0 +1,16 @@
+{
+  "watch": ["src", "server.js", "scripts"],
+  "ext": "js,json",
+  "ignore": [
+    "node_modules/",
+    "models/",
+    "venv/",
+    "data/",
+    "uploads/",
+    "frontend/",
+    "docs/",
+    "*.log",
+    "*.test.js"
+  ],
+  "exec": "node server.js"
+}
