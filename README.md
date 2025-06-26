@@ -91,7 +91,6 @@ curl -X POST http://localhost:3001/v1/chat/completions -H "Authorization: Bearer
 ```bash
 curl -X POST http://localhost:3001/v1/chat/completions -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{"messages": [{"role": "user", "content": "Hello"}], "stream": true}'
 ```
->>>>>>> main
 
 ## Contributing
 
