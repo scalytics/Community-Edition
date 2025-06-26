@@ -8,7 +8,7 @@ const { rateLimiterMiddleware } = require('../middleware/rateLimitMiddleware');
 
 // Import Controller
 const scalyticsApiController = require('../controllers/scalyticsApiController');
-const deepSearchApiController = require('../controllers/deepSearchApiController');
+const liveSearchApiController = require('../controllers/liveSearchApiController');
 const vectorApiController = require('../controllers/vectorApiController'); 
 const { protect } = require('../middleware/authMiddleware'); 
 
@@ -108,7 +108,7 @@ const { protect } = require('../middleware/authMiddleware');
  *                type: boolean
  *                description: If set, reports token usage stats in a final stream chunk before the stream termination.
  *            description: Options for streaming responses.
- *     DeepSearchApiRequest:
+ *     LiveSearchApiRequest:
  *       type: object
  *       required:
  *         - query
@@ -448,7 +448,7 @@ router.post(
 
 /**
  * @swagger
- * /v1/deepsearch:
+ * /v1/livesearch:
  *   post:
  *     summary: Initiates a Live Search task and streams results via Server-Sent Events (SSE).
  *     tags: [Scalytics API]
@@ -459,7 +459,7 @@ router.post(
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/DeepSearchApiRequest'
+ *             $ref: '#/components/schemas/LiveSearchApiRequest'
  *     responses:
  *       '200':
  *         description: OK. Returns a Server-Sent Events (SSE) stream. The stream will contain events like 'progress', 'markdown_chunk', 'complete', 'error', 'cancelled'.
@@ -494,7 +494,7 @@ router.post(
   globalFeatureToggle,
   authScalyticsApi,       
   rateLimiterMiddleware,  
-  deepSearchApiController.initiateDeepSearchStream
+  liveSearchApiController.initiateLiveSearchStream
 );
 
 /**

@@ -10,7 +10,7 @@ const apiKeyService = require('../services/apiKeyService');
 const { db } = require('../models/db'); 
 const vllmService = require('../services/vllmService');
 
-const initiateDeepSearchStream = async (req, res, next) => {
+const initiateLiveSearchStream = async (req, res, next) => {
   const { 
     query: originalUserQuery,
     reasoningModelName, 
@@ -558,5 +558,5 @@ const initiateDeepSearchStream = async (req, res, next) => {
 };
 
 module.exports = {
-  initiateDeepSearchStream,
+  initiateLiveSearchStream,
 };

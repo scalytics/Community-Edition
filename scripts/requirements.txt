@@ -1,12 +1,14 @@
 #vLLM 0.9.1
 --index-url https://pypi.org/simple
 --extra-index-url https://download.pytorch.org/whl/test/cu126 
-torch==2.7.1+cu126
+torch==2.7.1+cu126; sys_platform != 'darwin'
+torch==2.7.0; sys_platform == 'darwin'
 torchvision==0.22.0
 torchaudio==2.7.0
 vllm==0.9.1
 bitsandbytes>=0.45.3; sys_platform == 'linux'
 bitsandbytes==0.41.3; sys_platform == 'darwin'
+triton; sys_platform == 'linux'
 compressed-tensors>=0.10
 gguf>=0.13
 wrapt>=1.15.0,<2
@@ -59,7 +61,7 @@ numpy>=1.24.4,<2.0.0
 fsspec<=2025.3.0,>=2023.1.0
 tldextract>=3.6.0 
 
-# Dependencies for FastAPI Live Search Orchestrator Service
+# Dependencies for FastAPI Deep Search Orchestrator Service
 fastapi
 uvicorn[standard]
 pydantic

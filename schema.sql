@@ -275,6 +275,37 @@ CREATE TABLE IF NOT EXISTS permissions (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create groups table
+CREATE TABLE IF NOT EXISTS groups (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create user_groups table
+CREATE TABLE IF NOT EXISTS user_groups (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  group_id INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (group_id) REFERENCES groups (id) ON DELETE CASCADE,
+  UNIQUE(user_id, group_id)
+);
+
+-- Create group_admin_permissions table
+CREATE TABLE IF NOT EXISTS group_admin_permissions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  group_id INTEGER NOT NULL,
+  permission_id INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (group_id) REFERENCES groups (id) ON DELETE CASCADE,
+  FOREIGN KEY (permission_id) REFERENCES admin_permissions (id) ON DELETE CASCADE,
+  UNIQUE(group_id, permission_id)
+);
+
 -- Create permission_templates table for group-based default permissions
 CREATE TABLE IF NOT EXISTS permission_templates (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -424,6 +455,14 @@ VALUES
   ('use_all_models', 'Use All Models', 'Use any model in the system regardless of group permissions'),
   ('manage_integrations', 'Manage Integrations', 'Allow users to manage authentication and service integrations (OAuth, API keys, etc.)'),
   ('view_integrations', 'View Integrations', 'Allow users to view integration configurations without being able to modify them');
+
+-- Insert Scalytics API provider
+INSERT OR IGNORE INTO api_providers (name, is_external, is_manual, is_active, description, category)
+VALUES ('Scalytics API', 0, 1, 1, 'Internal API for Scalytics Connect', 'system');
+
+-- Insert xAI provider
+INSERT OR IGNORE INTO api_providers (name, is_external, is_manual, is_active, description, category, api_url, website)
+VALUES ('xAI', 1, 0, 1, 'xAI API', 'external', 'https://api.x.ai/v1', 'https://x.ai');
 
 
 -- Insert some predefined integrations with empty credentials

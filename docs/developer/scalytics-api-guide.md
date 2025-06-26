@@ -25,9 +25,10 @@ The Scalytics API is designed to be compatible with the OpenAI API format, makin
 
 ### For Administrators: Enabling the API
 
-1.  Navigate to **Admin Dashboard** > **Scalytics API**.
-2.  Use the **"Enable Scalytics API Access"** toggle to activate or deactivate the API globally.
-3.  Configure the **Time Window** and **Max Requests per Window** to set the global rate limit.
+1.  Navigate to **Admin Dashboard** > **API Providers**.
+2.  Select **Scalytics API**.
+3.  Use the **"Enable Scalytics API Access"** toggle to activate or deactivate the API globally.
+4.  Configure the **Time Window** and **Max Requests per Window** to set the global rate limit.
 
 ## 3. Authentication
 
@@ -85,10 +86,10 @@ curl https://YOUR_INSTANCE_URL/v1/chat/completions \
 
 Initiates a Live Search task and streams progress and results.
 
--   **URL:** `/v1/live-search`
+-   **URL:** `/v1/livesearch`
 -   **Method:** `POST`
 -   **Headers:** `Accept: text/event-stream`
--   **Request Body:** See the `DeepSearchApiRequest` schema for all available parameters.
+-   **Request Body:** See the `LiveSearchApiRequest` schema for all available parameters.
     -   `query` (string, required): The research query.
     -   `reasoningModelName` (string, required): The name of the model for reasoning tasks.
     -   `synthesisModelName` (string, required): The name of the model for the final synthesis.
@@ -97,7 +98,7 @@ Initiates a Live Search task and streams progress and results.
 #### Example: Live Search Request
 
 ```bash
-curl -N https://YOUR_INSTANCE_URL/v1/live-search \
+curl -N https://YOUR_INSTANCE_URL/v1/livesearch \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Accept: text/event-stream" \
