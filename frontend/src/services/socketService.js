@@ -38,9 +38,8 @@ class WebSocketService {
         this.disconnect();
       }
 
-      const apiUrl = process.env.REACT_APP_API_URL || window.location.origin;
-      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const socketUrl = `${wsProtocol}//${apiUrl.replace(/^https?:\/\//, '').replace(/\/api$/, '')}/socket?clientId=${this.clientId}`;
+const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+const socketUrl = `${wsProtocol}//localhost:3001/socket?clientId=${this.clientId}`;
 
       try {
         this.socket = new WebSocket(socketUrl);

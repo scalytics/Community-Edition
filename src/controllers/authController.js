@@ -584,8 +584,7 @@ exports.handleRegisterRedirect = async (req, res) => {
     // console.log(`[handleRegisterRedirect] Token validated for user: ${user.username}. Redirecting to set password page.`); // Removed debug log
 
     // Construct the frontend URL, defaulting to localhost:3001 if FRONTEND_URL is not set in the current .env
-    const baseUrl = process.env.FRONTEND_URL || 'http://localhost:3001';
-    const setPasswordUrl = `${baseUrl.replace(/\/$/, '')}/set-password?token=${encodeURIComponent(token)}`;
+    const setPasswordUrl = `/set-password?token=${encodeURIComponent(token)}`;
 
     // Redirect the user's browser
     res.redirect(setPasswordUrl);

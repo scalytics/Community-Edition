@@ -41,8 +41,8 @@ To get started with the Scalytics Community Edition, follow these steps:
 
 1.  Clone the repository:
     ```bash
-    git clone git@github.com:scalytics/Community-Edition.git
-    cd Community-Edition
+    git clone git@github.com:scalytics/Scalytics-Community-Edition.git
+    cd Scalytics-Community-Edition
     ```
 
 2.  Set up your environment:
@@ -69,6 +69,29 @@ After the application starts:
 ## Documentation
 
 For more detailed information, please refer to our official documentation in the `docs/` directory.
+
+## API Testing
+
+You can test the API using `curl`.
+
+### List Models
+
+```bash
+curl -X GET http://localhost:3001/v1/models -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+### Chat Completions (Non-Streaming)
+
+```bash
+curl -X POST http://localhost:3001/v1/chat/completions -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{"messages": [{"role": "user", "content": "Hello"}]}'
+```
+
+### Chat Completions (Streaming)
+
+```bash
+curl -X POST http://localhost:3001/v1/chat/completions -H "Authorization: Bearer YOUR_API_KEY" -H "Content-Type: application/json" -d '{"messages": [{"role": "user", "content": "Hello"}], "stream": true}'
+```
+>>>>>>> main
 
 ## Contributing
 

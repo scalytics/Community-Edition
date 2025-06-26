@@ -139,6 +139,9 @@ const ModelManagerContent = ({
         }
         return newProgress;
       });
+      
+      // Refresh the models list to show updated activation status
+      refreshData();
     };
 
     const handleListActivationError = (activationId, data) => {
@@ -195,22 +198,17 @@ const ModelManagerContent = ({
   }, []);
 
   // --- Event Handlers / Wrappers ---
-  const handleEditModel = (model) => {
-    const isEmbedding = model.is_embedding_model === 1 || model.is_embedding_model === true || model.pipeline_tag === 'feature-extraction';
-    if (isEmbedding) {
-      handleEditEmbeddingModel(model);
-    } else {
-      setEmbeddingModelToEdit(null);
-      setShowEmbeddingEditForm(false);
-      loadModelIntoForm(model);
-    }
+  const handleEditModel = (model) => { 
+    setEmbeddingModelToEdit(null); 
+    setShowEmbeddingEditForm(false);
+    loadModelIntoForm(model); 
   };
 
-  const handleEditEmbeddingModel = (model) => {
-    resetForm();
+  const handleEditEmbeddingModel = (model) => { 
+    resetForm(); 
     setEmbeddingModelToEdit(model);
-    setShowEmbeddingEditForm(true);
-    setActiveTab('details');
+    setShowEmbeddingEditForm(true); 
+    setActiveTab('details'); 
   };
 
   const handleCancelEdit = () => { 
@@ -291,10 +289,12 @@ const ModelManagerContent = ({
             loadModelIntoForm(updatedModelData);
           }
         } catch (fetchErr) {
+          console.error(`[ModelManager] Error re-fetching model ${modelToActivate.id} after activation attempt:`, fetchErr);
         }
       }
       setActiveTab('details');
     } else {
+      console.error("[ModelManager] Save failed before activation. Aborting activation.");
       setActionError("Failed to save model configuration before activating. Please try again.");
     }
   };

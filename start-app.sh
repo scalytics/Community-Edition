@@ -124,15 +124,8 @@ echo -e "${GREEN}Python service started successfully (PID: $PYTHON_PID).${RESET}
 
 # Start Frontend Server
 echo -e "${GREEN}Starting frontend server...${RESET}"
-npm start --prefix "$FRONTEND_DIR" &
+PORT=3000 npm start --prefix "$FRONTEND_DIR" &
 FRONTEND_PID=$!
-sleep 3
-if ! ps -p $FRONTEND_PID > /dev/null; then
-  echo -e "${RED}Failed to start frontend server. Check logs for details.${RESET}"
-  kill $BACKEND_PID
-  kill $PYTHON_PID
-  exit 1
-fi
 echo -e "${GREEN}Frontend server started successfully (PID: $FRONTEND_PID).${RESET}"
 
 print_header "✅ All Services Running"
